@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  bot:
+    restart: always
+    build: .
+    command: python3 bot.main
+    env_file:
+      - .env
+    depends_on:
+      - worker
+  worker:
+    restart: always
+    build: .
+    command: celery --app worker.app worker --loglevel=INFO
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+  worker-beat:
+    restart: always
+    build: .
+    command: celery --app worker.app beat -l info
+    env_file:
+      - .env
+    depends_on:
+      - worker  
+  redis:
+    restart: always
+    image: redis:7.0-alpine
+  postgres:
+    restart: always
+    image: postgres:15.3-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+volumes:
+  postgres-data:
+  

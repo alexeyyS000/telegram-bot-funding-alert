@@ -1,0 +1,4 @@
+FUNDINGS
+    {% for i in fundings -%}
+        {{i.symbol}} {{i.rate}}% time in UTC: {{i.date_time}}
+    {% endfor %}

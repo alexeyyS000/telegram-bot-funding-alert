@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "telegrambot"
+version = "0.1.0"
+description = ""
+authors = ["alexey <a556077@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+celery = {extras = ["redis"], version = "^5.3.1"}
+python-dotenv = "^1.0.0"
+alembic = "^1.11.3"
+sqlalchemy = "^2.0.20"
+websockets = "^11.0.3"
+requests = "^2.31.0"
+pytelegrambotapi = "^4.13.0"
+jinja2 = "^3.1.2"
+psycopg = "^3.1.10"
+aiogram = "^3.1.1"
+pydantic = "2.3"
+pydantic-settings = "^2.0.3"
+pytest = "^7.4.2"
+sqlalchemy-utils = "^0.41.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

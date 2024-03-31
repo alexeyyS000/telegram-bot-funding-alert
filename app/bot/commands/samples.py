@@ -1,0 +1,5 @@
+add = "add#{}"
+ban = "ban#{}"
+refusal = "refusal#{}"
+make_admin = "make_admin#{}"
+page = "page#{}"
