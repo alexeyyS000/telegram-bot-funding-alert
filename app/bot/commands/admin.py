@@ -49,7 +49,7 @@ async def handler(callback_query: types.CallbackQuery):
     except AlreadyRefusaled:
         await callback_query.answer(
             text=f"id {id} already refusaled"
-        )  # тоже не знаю как избедать дублирования кода тут
+        )
 
 
 @dp.callback_query(lambda c: c.data.startswith("make_admin"))
@@ -82,7 +82,6 @@ async def handler(message: types.Message):
 async def handler(callback_query: types.CallbackQuery = None):
     page = callback_query.data.split("#")[1]
 
-    # user_data = UserDAL(session).fetch(3, page)
     with get_user_service() as user:
         user_data = user.get_pagination(page)
     keyboard = pagination_keyboard(
